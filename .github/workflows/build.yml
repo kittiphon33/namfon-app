@@ -20,8 +20,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install --platform=linux --arch=x64
-          npm rebuild
+          npm install --no-optional || npm install --legacy-peer-deps
 
       - name: Setup Java JDK
         uses: actions/setup-java@v4
@@ -36,32 +35,6 @@ jobs:
         run: |
           npx cap add android || true
           npx cap sync android
-
-      - name: Build Android APK
-        run: |
-          cd android
-          chmod +x gradlew
-          ./gradlew assembleDebug
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Namfon-AI-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
-          npx cap add android || true
-          npx cap sync android
-
-      - name: Build Android APK
-        run: |
-          cd android
-          chmod +x gradlew
-          ./gradlew assembleDebug
-
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Namfon-AI-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
 
       - name: Build Android APK
         run: |
