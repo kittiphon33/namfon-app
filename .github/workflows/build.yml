@@ -16,16 +16,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+
+      - name: Install Dependencies
+        run: |
+          npm install --include=optional
+          npm rebuild
 
       - name: Setup Java JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
           java-version: '17'
-
-      - name: Install Dependencies
-        run: npm install
 
       - name: Build Web Assets
         run: npm run build
@@ -34,6 +36,18 @@ jobs:
         run: |
           npx cap add android || true
           npx cap sync android
+
+      - name: Build Android APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Namfon-AI-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
 
       - name: Build Android APK
         run: |
