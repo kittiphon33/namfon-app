@@ -16,11 +16,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 20
 
       - name: Install Dependencies
         run: |
-          npm install --no-optional || npm install --legacy-peer-deps
+          npm uninstall @tailwindcss/oxide || true
+          npm install --force
 
       - name: Setup Java JDK
         uses: actions/setup-java@v4
