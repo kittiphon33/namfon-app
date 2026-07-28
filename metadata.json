@@ -1,0 +1,6 @@
+{
+  "name": "Namfon AI - น้ำฝน ผู้ช่วยส่วนตัว",
+  "description": "ผู้ช่วยส่วนตัวชื่อ 'น้ำฝน' นิสัยกวนตีนนิดๆ สนิทสนม รองรับ Gemini Live API Audio Streaming Real-time สำหรับคุณปอนด์",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

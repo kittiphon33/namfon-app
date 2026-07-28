@@ -1,0 +1,14 @@
+{
+  "appId": "com.namfon.ai",
+  "appName": "น้ำฝน AI",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  },
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
+}
